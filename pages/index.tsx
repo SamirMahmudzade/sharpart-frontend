@@ -15,6 +15,11 @@ import PageLayout from '../components/Layouts/PageLayout';
 import NodeCard from '../components/Cards/NodeCard';
 
 export default function Home() {
+      const { data: xdaiGas, error: xdaiGasError } = useSWR(
+            'https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle', 
+            fetcher,
+            { refreshInterval: 300060 }
+      )
       const { data: maticGas, error: maticGasError } = useSWR(
             'https://gasstation-mainnet.matic.network',
             fetcher,
@@ -34,12 +39,13 @@ export default function Home() {
       })
       const handleChange = (e) => {
             //* Set formatting input on change of text box
-            if(e.target.name === 'stringed'){
-                  setEthersBytes({ ...ethersBytes, stringed: ethers.utils.formatBytes32String(e.target.value)});
+            //* Cannot use square brackets, as the target depends on ethers util.
+            if (e.target.name === 'stringed') {
+                  setEthersBytes({ ...ethersBytes, stringed: ethers.utils.formatBytes32String(e.target.value) });
 
             }
-            else if (e.target.name === 'hexed'){
-                  setEthersBytes({...ethersBytes, hexed: ethers.utils.toUtf8String(e.target.value)})
+            else if (e.target.name === 'hexed') {
+                  setEthersBytes({ ...ethersBytes, hexed: ethers.utils.toUtf8String(e.target.value) })
             }
       }
 
@@ -96,12 +102,20 @@ export default function Home() {
                         <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 m-2 md:m-10 lg:m-16 ">
                               <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
                                     <Image className='animate-spin' src={PolygonImg} height={125} width={125} />
-                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>Polygon</p>
+                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>Polygon</p>
                               </div>
                               <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Standard gas price" body={maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Fastest gas price" body={maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'} />
+                        </div>
+                        <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 m-2 md:m-10 lg:m-16 ">
+                              <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
+                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>xDai Gas</p>
+                              </div>
+                              <SimpleCard title="Safe Low gas price" body={xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
                         </div>
                   </motion.div>
 
