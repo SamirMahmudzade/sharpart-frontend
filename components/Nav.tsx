@@ -19,7 +19,7 @@ const Nav = () => {
       const listItems: listItem[] = [
             {
                   id: 1,
-                  text: 'Your NFT Dashboard',
+                  text: 'Your NFTs',
                   link: 'dashboard',
             },
             {
@@ -37,7 +37,11 @@ const Nav = () => {
                   text: 'Contact',
                   link: 'contact'
             },
-
+            {
+                  id: 5,
+                  text: 'About',
+                  link: 'about'
+            },
       ]
 
       const { theme, setTheme } = useTheme()

@@ -15,6 +15,7 @@ import PageLayout from '../components/Layouts/PageLayout';
 import NodeCard from '../components/Cards/NodeCard';
 
 export default function Home() {
+      //todo - Add xDai logo, and equal size to polygon or eth image size.
       const { data: xdaiGas, error: xdaiGasError } = useSWR(
             'https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle', 
             fetcher,
