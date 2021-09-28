@@ -9,6 +9,7 @@ import { fetcher } from "../lib/helpers/fetchers";
 import copyToBoard from '../lib/helpers/copyToClipboard';
 import PolygonImg from '../public/polygon-png.png';
 import EthImg from '../public/eth.png'
+import xDaiImg from '../public/xDai.png'
 import Heading from '../components/Typography/Heading';
 import SimpleCard from '../components/Cards/SimpleCard';
 import PageLayout from '../components/Layouts/PageLayout';
@@ -17,7 +18,7 @@ import NodeCard from '../components/Cards/NodeCard';
 export default function Home() {
       //todo - Add xDai logo, and equal size to polygon or eth image size.
       const { data: xdaiGas, error: xdaiGasError } = useSWR(
-            'https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle', 
+            'https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle',
             fetcher,
             { refreshInterval: 300060 }
       )
@@ -81,7 +82,7 @@ export default function Home() {
       );
 
       else return (
-            <div>
+            <div >
                   <motion.div key={ethGas}
                         initial={{ opacity: 0, translateX: -50, }}
                         animate={{ opacity: 1, translateX: 0 }}
@@ -89,10 +90,10 @@ export default function Home() {
                         className='flex flex-col space-y-8'
                   >
                         {ethGas &&
-                              <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 m-2 md:m-10 lg:m-16 ">
+                              <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
                                     <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
                                           <Image className='animate-spin ' src={EthImg} height={110} width={110} />
-                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin  text-th-primary-light break-all'>Mainnet</p>
+                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light break-all'>Mainnet</p>
                                     </div>
                                     <SimpleCard title="Safe Low gas price" body={ethGas.safeLow + ' ' + 'Gwei'} />
                                     <SimpleCard title="Standard gas price" body={ethGas.standard + ' ' + 'Gwei'} />
@@ -100,9 +101,12 @@ export default function Home() {
                                     <SimpleCard title="Next block base" body={ethGas.nextBase + ' ' + 'Gwei'} />
                               </div>
                         }
-                        <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 m-2 md:m-10 lg:m-16 ">
+
+
+
+                        <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
                               <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
-                                    <Image className='animate-spin' src={PolygonImg} height={125} width={125} />
+                                    <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
                                     <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>Polygon</p>
                               </div>
                               <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
@@ -110,14 +114,18 @@ export default function Home() {
                               <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Fastest gas price" body={maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'} />
                         </div>
-                        <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 m-2 md:m-10 lg:m-16 ">
-                              <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
-                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>xDai Gas</p>
+
+                        {xdaiGas &&
+                              <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
+                                    <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
+                                          <Image className='animate-spin' src={xDaiImg} height={110} width={110} />
+                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>xDai Gas</p>
+                                    </div>
+                                    <SimpleCard title="Safe Low gas price" body={xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'} />
+                                    <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
+                                    <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
                               </div>
-                              <SimpleCard title="Safe Low gas price" body={xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'} />
-                              <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
-                              <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
-                        </div>
+                        }
                   </motion.div>
 
 
@@ -133,7 +141,7 @@ export default function Home() {
                         >
                               <Heading title="This is SharpArt" hScreen={true}>
                                     <p className="text-center text-base sm:text-xl lg:text-2xl 
-                              text-th-primary-light text-shadow-md subpixel-antialiased 
+                                    text-th-primary-light text-shadow-md subpixel-antialiased 
                               ">
                                           The bridge between talented artists, and the secret of digital asset demand.
                                     </p>
@@ -141,10 +149,14 @@ export default function Home() {
                         </motion.div>
                   </div>
                   <PageLayout>
+                        <Heading
+                              title='Some Helper Functions'
+                              fontSize='text-base sm:text-1xl md:text-5xl '
+                        />
                         <NodeCard wFull>
                               <Heading
                                     title='Convert String to Bytes32'
-                                    fontSize='text-base sm:text-1xl md:text-4xl '
+                                    fontSize='text-base sm:text-1xl md:text-3xl '
                               />
                               <div className='
                               flex flex-col 
@@ -183,7 +195,7 @@ export default function Home() {
                         <NodeCard wFull>
                               <Heading
                                     title='Convert Bytes32 to String'
-                                    fontSize='text-base sm:text-1xl md:text-4xl '
+                                    fontSize='text-base sm:text-1xl md:text-3xl '
                               />
                               <div className='
                               flex flex-col 
