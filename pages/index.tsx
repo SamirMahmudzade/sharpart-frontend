@@ -87,7 +87,7 @@ export default function Home() {
                         initial={{ opacity: 0, translateX: -50, }}
                         animate={{ opacity: 1, translateX: 0 }}
                         transition={{ duration: 0.75 }}
-                        className='flex flex-col space-y-8'
+                        className='flex flex-col space-y-16'
                   >
                         {ethGas &&
                               <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
