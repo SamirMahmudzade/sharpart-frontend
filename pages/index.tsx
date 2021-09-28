@@ -52,22 +52,6 @@ export default function Home() {
       }
 
       //* intersection observer hook
-      const { inView, entry, ref } = useInView();
-      const animationControl = useAnimation();
-
-      useEffect(() => {
-            if (inView) {
-                  animationControl.start({
-                        opacity: 1,
-                        x: 0,
-                        y: 0,
-                        transition: {
-                              delay: 0.1,
-                              duration: 1.25
-                        }
-                  });
-            }
-      }, [inView])
 
       if (!maticGas) return (
             <div id="div1" className="flex flex-col items-center justify-center ">
@@ -128,17 +112,7 @@ export default function Home() {
                         }
                   </motion.div>
 
-
-
-
-                  <div ref={ref} >
-                        <motion.div
-                              initial={{
-                                    x: '-200vw',
-                                    y: '-200vw'
-                              }}
-                              animate={animationControl}
-                        >
+          
                               <Heading title="This is SharpArt" hScreen={true}>
                                     <p className="text-center text-base sm:text-xl lg:text-2xl 
                                     text-th-primary-light text-shadow-md subpixel-antialiased 
@@ -146,8 +120,7 @@ export default function Home() {
                                           The bridge between talented artists, and the secret of digital asset demand.
                                     </p>
                               </Heading>
-                        </motion.div>
-                  </div>
+                
                   <PageLayout>
                         <Heading
                               title='Some Helper Functions'
