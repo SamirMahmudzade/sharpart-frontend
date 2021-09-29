@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { SunIcon, HomeIcon, MenuIcon } from '@heroicons/react/solid';
+import { useInterval } from '../hooks/useInterval';
 
 
 type listItem = {
@@ -46,23 +47,32 @@ const Nav = () => {
 
       const { theme, setTheme } = useTheme()
 
+      const [titleShadow, setTitleShadow] = useState(true)
+      useInterval(
+            () => setTitleShadow(false),
+            2500
+      )
       //todo - clean up after setting up responsive dropdown
       return (
             <div>
                   <div className=' w-0 h-0 md:h-auto md:w-auto invisible md:visible'>
                         <nav className='
                   flex flex-wrap items-center justify-center 
-                  bg-th-background 
-                  md:px-8 px-2 py-4 shadow-lg'>
+                  bg-th-background md:px-8 px-2 py-4 shadow-lg
+                  '>
                               <Link href='/'>
                                     <a className='
-                              xl:inline-flex  w-0  
+                              xl:inline-flex w-0  
                               xl:w-auto xl:p-2 p-0 mr-0  xl:mr-4  
                               items-center justify-center 
                               invisible xl:visible  
                               hover:shadow-lg rounded-lg transition duration-100 
                               ease-in-out transform  hover:scale-110  antialiased' >
-                                          <span className=' lg:text-3xl text-sm text-th-primary-light font-bold uppercase tracking-wide'>
+                                          <span className=' 
+                                          lg:text-3xl text-sm text-th-primary-light
+                                          font-bold uppercase tracking-wide
+                                          transition transform 
+                                          '>
                                                 Sharpart
                                           </span>
                                     </a>
@@ -83,14 +93,14 @@ const Nav = () => {
                               {listItems.map((listItem) =>
                                     <Link key={listItem.id} href={`/` + listItem.link}>
                                           <a className=' 
-                                                subpixel-antialiased focus:outline-none
-                                                text-th-primary-light
-                                                text-xs md:text-lg lg:text-1xl  xl:text-2xl
+                                                subpixel-antialiased text-th-primary-light
+                                                text-xs md:text-base lg:text-lg xl:text-1xl
                                                 md:h-auto inline-flex md:w-auto 
                                                 font-bold items-center justify-center
                                                 py-2 px-4 xl:py-4 xl:px-6
-                                                lg:mx-4 md:mx-2 sm:mx-1 mx-0  
-                                                hover:shadow-lg rounded-lg transition duration-100 
+                                                lg:mx-4 md:mx-2 sm:mx-1 mx-0 
+                                                hover:shadow-lg focus:outline-none
+                                                rounded-lg transition duration-100 
                                                 ease-in-out transform  hover:scale-110
                                                 '>
                                                 {listItem.text}
