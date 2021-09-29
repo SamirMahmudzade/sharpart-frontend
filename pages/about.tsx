@@ -12,11 +12,12 @@ import NodeCard from '../components/Cards/NodeCard';
 export default function Contact() {
 
     return (
-        <>
+        <div className='h-screen'>
             <PageLayout>
-                <Heading title='About us - SharpArt'/>
-                <p className='text-th-primary-light'>Not much here rn</p>
+                <Heading title='About us - SharpArt'>
+                    <p className='text-th-primary-light'>More coming soon.</p>
+                </Heading>
             </PageLayout>
-        </>
+        </div>
     );
 }
