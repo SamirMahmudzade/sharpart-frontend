@@ -115,7 +115,7 @@ export default function Home() {
           
                               <Heading title="This is SharpArt" hScreen={true}>
                                     <p className="text-center text-base sm:text-xl lg:text-2xl 
-                                    text-th-primary-light text-shadow-md subpixel-antialiased 
+                                    text-th-primary-light  subpixel-antialiased 
                               ">
                                           The bridge between talented artists, and the secret of digital asset demand.
                                     </p>
@@ -201,6 +201,7 @@ export default function Home() {
                                           '>
                                                 <ClipboardCopyIcon className='inline-flex antialiased' width={30} height={30} />
                                           </button>
+                                          test text
                                     </p>
                               </div>
                         </NodeCard>
