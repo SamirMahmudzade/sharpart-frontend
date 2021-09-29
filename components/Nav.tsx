@@ -13,7 +13,6 @@ type listItem = {
       link: string
 }
 
-
 const Nav = () => {
       //* nav items for map
       //todo - Put into CMS.
@@ -47,11 +46,19 @@ const Nav = () => {
 
       const { theme, setTheme } = useTheme()
 
-      const [titleShadow, setTitleShadow] = useState(true)
-      useInterval(
-            () => setTitleShadow(false),
-            2500
-      )
+
+      //* When span anchor title is hovered, save it as true, to stop anchor animation.
+      const [titleHover, setTitleHover] = useState<boolean>(false)
+
+      const onTitleEnter = () => {
+            setTitleHover(true)
+      }
+      const onTitleLeave = () => {
+            setTitleHover(false)
+      }
+
+
+
       //todo - clean up after setting up responsive dropdown
       return (
             <div>
@@ -61,13 +68,17 @@ const Nav = () => {
                   bg-th-background md:px-8 px-2 py-4 shadow-lg
                   '>
                               <Link href='/'>
-                                    <a className='
+                                    <a
+                                          onMouseEnter={() => onTitleEnter()}
+                                          onMouseLeave={() => onTitleLeave()}
+                                          className={`
                               xl:inline-flex w-0  
                               xl:w-auto xl:p-2 p-0 mr-0  xl:mr-4  
                               items-center justify-center 
-                              invisible xl:visible  
+                              invisible xl:visible 
+                              ${titleHover ? 'animate-none' : 'animate-shadowGlow'}
                               hover:shadow-lg rounded-lg transition duration-100 
-                              ease-in-out transform  hover:scale-110  antialiased' >
+                              ease-in-out transform  hover:scale-110  antialiased`} >
                                           <span className=' 
                                           lg:text-3xl text-sm text-th-primary-light
                                           font-bold uppercase tracking-wide
