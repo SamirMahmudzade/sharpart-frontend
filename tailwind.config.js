@@ -65,6 +65,13 @@ module.exports = {
         '6': '6px',
         '10': '10px',
       },
+      ringOpacity: {
+        '5': '0.05',
+        '10': '0.10',
+        '15': '0.15',
+        '25': '0.35',
+        '35': '0.65',
+      },
       backgroundImage: {
         'the-willy': "url('/head.png')",
         'bill': " url('https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg')",
@@ -130,6 +137,7 @@ module.exports = {
   variants: {
     extend: {
       fontSize: ['hover', 'focus'],
+      ringOpacity: ['hover', 'active'],
     },
   },
   plugins: [
