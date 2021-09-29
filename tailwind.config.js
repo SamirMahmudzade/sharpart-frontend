@@ -128,9 +128,22 @@ module.exports = {
         'th-accent-moralis': 'var(--accent-moralis)',
 
       },
+      keyframes: {
+
+        shadowGlow: {
+          '0%': { boxShadow: ('0 0px 0px 0px rgba(0, 0, 0, 0.1)') },
+          '25%': { boxShadow: ('0 3px 5px 0px rgba(0, 0, 0, 0.1)') },
+          '50%': { boxShadow: ('0 6px 9px -1px rgba(0, 0, 0, 0.1)') , },
+          '75%': { boxShadow: ('0 8px 12px -1px rgba(0, 0, 0, 0.1)') },
+          ' 100%': { boxShadow:('0 10px 15px -3px rgba(0, 0, 0, 0.1)') },
+          
+        },
+       
+      },
       animation: {
         bounce: 'bounce 3s infinite',
-        spin: 'spin 5s infinite linear'
+        spin: 'spin infinite linear  8s',
+        shadowGlow: 'shadowGlow 1s alternate infinite ease-in-out'
       }
     }
   },
@@ -138,7 +151,9 @@ module.exports = {
     extend: {
       fontSize: ['hover', 'focus'],
       ringOpacity: ['hover', 'active'],
+      animation: ['hover', 'focus'],
     },
+
   },
   plugins: [
     require('tailwindcss-textshadow'),
