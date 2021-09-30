@@ -29,13 +29,23 @@ function LineChart({ data, labels, steps}: Props) {
             options: {
                   y: {
                         stepSize: steps
-                  }
+                  },
+                  plugins: {
+                        legend: {
+                            labels: {
+                                // This more specific font property overrides the global property
+                                font: {
+                                    size: 26
+                                }
+                            }
+                        }
+                    }
             }
       };
 
       return (
             <>
-                  <Line type='line' data={chartConfig} />
+                  <Line type='line'  data={chartConfig} />
             </>
       );
 

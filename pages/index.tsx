@@ -44,11 +44,11 @@ export default function Home() {
             //* Set formatting input on change of text box
             //* Cannot use square brackets, as the target depends on ethers util.
             if (e.target.name === 'stringed') {
-                  setEthersBytes({ ...ethersBytes, stringed: ethers.utils.formatBytes32String(e.target.value) });
+                  setEthersBytes({ ...ethersBytes, stringed: ethers.utils.toUtf8String(e.target.value) });
 
             }
             else if (e.target.name === 'hexed') {
-                  setEthersBytes({ ...ethersBytes, hexed: ethers.utils.toUtf8String(e.target.value) })
+                  setEthersBytes({ ...ethersBytes, hexed: ethers.utils.formatBytes32String(e.target.value) })
             }
       }
 
@@ -194,22 +194,22 @@ export default function Home() {
                               space-y-4 text-center'>
                                     < input
                                           type='text'
-                                          name='stringed'
+                                          name='hexed'
                                           onChange={(e) => { handleChange(e) }}
                                           className='
                                           focus:outline-none text-xl 
-                                          text-th-primary-dark focus:bg-th-accent-light 
+                                          text-th-primary-dark focus:bg-th-primary-light 
                                           transition-colors duration-300 
                                           ease-in-out bg-opacity-25 p-2'/>
-                                    <p className='text-th-accent-light text-center text-lg' >
+                                    <p className='text-th-primary-medium text-center text-lg' >
                                           <span className='
                                           uppercase tracking-wide 
                                           font-extrabold text-th-primary-light'>
                                                 Result:
                                           </span>
-                                          {' ' + ethersBytes.stringed}
+                                          {' ' + ethersBytes.hexed}
                                           <button
-                                                onClick={() => copyToBoard(ethersBytes.stringed)}
+                                                onClick={() => copyToBoard(ethersBytes.hexed)}
                                                 className='
                                           focus:outline-none 
                                           text-th-primary-light
@@ -233,22 +233,22 @@ export default function Home() {
                               space-y-4 text-center'>
                                     < input
                                           type='text'
-                                          name='hexed'
+                                          name='stringed'
                                           onChange={(e) => { handleChange(e) }}
                                           className='
                                           focus:outline-none text-xl 
-                                          text-th-primary-dark focus:bg-th-accent-light 
+                                          text-th-primary-dark focus:bg-th-primary-light 
                                           transition-colors duration-300 
                                           ease-in-out bg-opacity-25 p-2'/>
-                                    <p className='text-th-accent-light text-center text-lg' >
+                                    <p className='text-th-primary-medium text-center text-lg' >
                                           <span className='
                                           uppercase tracking-wide 
                                           font-extrabold text-th-primary-light'>
                                                 Result:
                                           </span>
-                                          {' ' + ethersBytes.hexed.trim()}
+                                          {' ' + ethersBytes.stringed.trim()}
                                           <button
-                                                onClick={() => copyToBoard(ethersBytes.hexed)}
+                                                onClick={() => copyToBoard(ethersBytes.stringed)}
                                                 className='
                                           focus:outline-none 
                                           text-th-primary-light
@@ -258,7 +258,7 @@ export default function Home() {
                                           '>
                                                 <ClipboardCopyIcon className='inline-flex antialiased' width={30} height={30} />
                                           </button>
-                                          test text
+
                                     </p>
                               </div>
                         </NodeCard>
