@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import useSWR from 'swr'
 import { useState, useEffect, Suspense } from 'react';
 import { ethers } from 'ethers'
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
-import { ClipboardCopyIcon } from '@heroicons/react/solid';
+import { ClipboardCopyIcon, ExternalLinkIcon } from '@heroicons/react/solid';
 import { fetcher } from "../lib/helpers/fetchers";
 import copyToBoard from '../lib/helpers/copyToClipboard';
 import PolygonImg from '../public/polygon-png.png';
@@ -71,22 +72,32 @@ export default function Home() {
                         initial={{ opacity: 0, translateX: -50, }}
                         animate={{ opacity: 1, translateX: 0 }}
                         transition={{ duration: 0.75 }}
-                        className='flex flex-col space-y-16'
+                        className='grid grid-flow-row space-y-0 md:space-y-10 lg:space-y-16'
                   >
                         {ethGas &&
                               <div className="
                               grid grid-cols-5 
                               gap-4 md:gap-8 lg:gap-10 
                               ">
-                                    <div className='
-                                    
-                                    flex flex-col 
-                                    space-y-1 sm:space-y-4 
-                                    lg:space-y-6 xl:space-y-10
-                                    items-center justify-center'>
-                                          <Image className='animate-spin' src={EthImg} height={110} width={110} />
-                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light break-all'>Mainnet</p>
-                                    </div>
+                                    <a target='blank' href='https://etherscan.io/gastracker' rel="noopener noreferrer" >
+                                          <div className='
+                                          antialiased rounded-3xl
+                                          ring-offset-th-primary-medium 
+                                          hover:scale-110 transform
+                                          hover:ring-8 hover:shadow-xl 
+                                          transition duration-300 
+                                          ease-in-out hover:cursor-pointer
+                                          flex flex-col 
+                                          space-y-1 sm:space-y-4 
+                                          lg:space-y-6 xl:space-y-10
+                                          items-center justify-center'>
+                                                <Image className='animate-spin' src={EthImg} height={110} width={110} />
+                                                <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light break-all'>
+                                                      Mainnet
+                                                      <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
+                                                </p>
+                                          </div>
+                                    </a>
                                     <SimpleCard title="Safe Low gas price" body={ethGas.safeLow + ' ' + 'Gwei'} />
                                     <SimpleCard title="Standard gas price" body={ethGas.standard + ' ' + 'Gwei'} />
                                     <SimpleCard title="Fast gas price" body={ethGas.fastest + ' ' + 'Gwei'} />
@@ -100,15 +111,26 @@ export default function Home() {
                         grid grid-cols-5 
                         gap-4 md:gap-8 lg:gap-10 
                         '>
-                              <div className='
-                              flex flex-col
-                              space-y-1 sm:space-y-4 
-                              lg:space-y-6 xl:space-y-10 
-                              items-center justify-center
-                              '>
-                                    <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
-                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>Polygon</p>
-                              </div>
+                              <a target='blank' href='https://polygonscan.com/gastracker/' rel="noopener noreferrer">
+                                    <div className='
+                                          antialiased rounded-3xl
+                                          ring-offset-th-primary-medium 
+                                          hover:scale-110 transform
+                                          hover:ring-8 hover:shadow-xl 
+                                          transition duration-300 
+                                          ease-in-out hover:cursor-pointer
+                                          flex flex-col 
+                                          hover:text-th-primary-medium  
+                                          space-y-1 sm:space-y-4 
+                                          lg:space-y-6 xl:space-y-10
+                                          items-center justify-center'>
+                                          <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
+                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>
+                                                Polygon
+                                                <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
+                                          </p>
+                                    </div>
+                              </a>
                               <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Standard gas price" body={maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'} />
                               <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
@@ -120,14 +142,26 @@ export default function Home() {
                               grid grid-cols-5
                               gap-4 md:gap-8 lg:gap-10 
                                ">
-                                    <div className='
-                                    flex flex-col 
-                                    space-y-1 sm:space-y-4 
-                                    lg:space-y-6 xl:space-y-10 
-                                    items-center justify-center'>
-                                          <Image className='animate-spin' src={xDaiImg} height={110} width={110} />
-                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>xDai Gas</p>
-                                    </div>
+                                    <a href="https://blockscout.com/xdai/mainnet/" target="blank" rel="noopener noreferrer">
+                                          <div className='
+                                          antialiased rounded-3xl
+                                          ring-offset-th-primary-medium 
+                                          hover:scale-110 transform
+                                          hover:ring-8 hover:shadow-xl 
+                                          transition duration-300 
+                                          ease-in-out hover:cursor-pointer
+                                          flex flex-col 
+                                          hover:text-th-primary-medium  
+                                          space-y-1 sm:space-y-4 
+                                          lg:space-y-6 xl:space-y-10
+                                          items-center justify-center'>
+                                                <Image className='animate-spin' src={xDaiImg} height={110} width={110} />
+                                                <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>
+                                                      xDai Gas
+                                                      <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
+                                                </p>
+                                          </div>
+                                    </a>
                                     <SimpleCard title="Safe Low gas price" body={xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'} />
                                     <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
                                     <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
