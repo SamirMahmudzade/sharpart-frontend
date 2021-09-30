@@ -4,7 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 import { ThemeProvider } from 'next-themes'
 import React, { ComponentType, useEffect } from 'react'
 import { Provider as ReduxProvider } from 'react-redux';
-import Moralis from 'moralis/dist/moralis'
+import Moralis from 'moralis'
 import { MoralisProvider } from "react-moralis";
 import { ToastContainer } from 'react-toastify'
 import { motion } from 'framer-motion';
@@ -25,6 +25,7 @@ const MyApp = ({
   router: router
 }) => {
   useEffect(() => {
+  
     if(window !== undefined) {
       Moralis.Web3.onAccountsChanged(async (accounts) => {
         const confirmed = confirm("Link this address to your account?");
