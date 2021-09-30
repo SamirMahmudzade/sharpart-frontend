@@ -20,7 +20,7 @@ export default function NodeCard({ children, wFull }: NodeCardProps): JSX.Elemen
             sm:p-2
             rounded-lg
             shadow-lg
-            bg-th-primary-dark
+            bg-th-foreground
             ${wFull? `w-full` : `w-auto`}
             `}>
                 {children}
