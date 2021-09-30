@@ -130,12 +130,19 @@ module.exports = {
       },
       keyframes: {
 
+        bottomShadow: {
+          '0%': { boxShadow: ('-5px  0px 0px -5px  rgba(0, 0, 0, 0.1)') },
+          '25%': { boxShadow: ('-5px  2px 2px -5px  rgba(0, 0, 0, 0.1)') },
+          '50%': { boxShadow: ('-5px  4px 4px -5px rgba(0, 0, 0, 0.1) ') , },
+          '75%': { boxShadow: ('0px 8px 8px 0px rgba(0, 0, 0, 0.1) ') },
+          ' 100%': { boxShadow:('0px 12px 12px 0px rgba(0, 0 , 0, 0.1)') }, 
+        },
         shadowGlow: {
-          '0%': { boxShadow: ('0 0px 0px 0px rgba(0, 0, 0, 0.1)') },
-          '25%': { boxShadow: ('0 3px 5px 0px rgba(0, 0, 0, 0.1)') },
-          '50%': { boxShadow: ('0 6px 9px -1px rgba(0, 0, 0, 0.1)') , },
-          '75%': { boxShadow: ('0 8px 12px -1px rgba(0, 0, 0, 0.1)') },
-          ' 100%': { boxShadow:('0 10px 15px -3px rgba(0, 0, 0, 0.1)') },
+          '0%': { boxShadow: ('0 1px 1px 0px rgba(0, 0, 0, 0.1)') },
+          '25%': { boxShadow: ('0 5px 5px 0px #0c4a6e ') },
+          '50%': { boxShadow: ('0 7px 7px 0px #1e40af ') },
+          '75%': { boxShadow: ('0 9px 9px 0px #60a5fa ') , },
+          ' 100%': { boxShadow:('0 9px 9px 0px #7fb4f5 ') },
           
         },
        
@@ -143,7 +150,8 @@ module.exports = {
       animation: {
         bounce: 'bounce 3s infinite',
         spin: 'spin infinite linear  8s',
-        shadowGlow: 'shadowGlow 1s alternate infinite ease-in-out'
+        shadowGlow: 'shadowGlow 2s alternate infinite ease-in-out',
+        bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out'
       }
     }
   },

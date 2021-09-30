@@ -48,15 +48,23 @@ const Nav = () => {
 
 
       //* When span anchor title is hovered, save it as true, to stop anchor animation.
-      const [titleHover, setTitleHover] = useState<boolean>(false)
+      const [linkHovered, setLinkHovered] = useState({
+            title: false,
+      })
 
       const onTitleEnter = () => {
-            setTitleHover(true)
+            setLinkHovered({ 
+                  ...linkHovered, 
+                  title : true
+            })
       }
       const onTitleLeave = () => {
-            setTitleHover(false)
+            setLinkHovered({ 
+                  ...linkHovered, 
+                  title : false
+            })
       }
-
+      
 
 
       //todo - clean up after setting up responsive dropdown
@@ -76,7 +84,7 @@ const Nav = () => {
                               xl:w-auto xl:p-2 p-0 mr-0  xl:mr-4  
                               items-center justify-center 
                               invisible xl:visible 
-                              ${titleHover ? 'animate-none' : 'animate-shadowGlow'}
+                              ${linkHovered.title ? 'animate-none' : 'animate-shadowGlow'}
                               hover:shadow-lg rounded-lg transition duration-100 
                               ease-in-out transform  hover:scale-110  antialiased`} >
                                           <span className=' 
@@ -103,13 +111,15 @@ const Nav = () => {
 
                               {listItems.map((listItem) =>
                                     <Link key={listItem.id} href={`/` + listItem.link}>
-                                          <a className=' 
+                                          <a  
+                                          className='
                                                 subpixel-antialiased text-th-primary-light
                                                 text-xs md:text-base lg:text-lg xl:text-1xl
                                                 md:h-auto inline-flex md:w-auto 
                                                 font-bold items-center justify-center
                                                 py-2 px-4 xl:py-4 xl:px-6
                                                 lg:mx-4 md:mx-2 sm:mx-1 mx-0 
+                                                
                                                 hover:shadow-lg focus:outline-none
                                                 rounded-lg transition duration-100 
                                                 ease-in-out transform  hover:scale-110
