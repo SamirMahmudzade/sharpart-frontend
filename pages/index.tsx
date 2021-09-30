@@ -74,9 +74,17 @@ export default function Home() {
                         className='flex flex-col space-y-16'
                   >
                         {ethGas &&
-                              <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
-                                    <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
-                                          <Image className='animate-spin ' src={EthImg} height={110} width={110} />
+                              <div className="
+                              grid grid-cols-5 
+                              gap-4 md:gap-8 lg:gap-10 
+                              ">
+                                    <div className='
+                                    
+                                    flex flex-col 
+                                    space-y-1 sm:space-y-4 
+                                    lg:space-y-6 xl:space-y-10
+                                    items-center justify-center'>
+                                          <Image className='animate-spin' src={EthImg} height={110} width={110} />
                                           <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light break-all'>Mainnet</p>
                                     </div>
                                     <SimpleCard title="Safe Low gas price" body={ethGas.safeLow + ' ' + 'Gwei'} />
@@ -88,8 +96,16 @@ export default function Home() {
 
 
 
-                        <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
-                              <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
+                        <div className='
+                        grid grid-cols-5 
+                        gap-4 md:gap-8 lg:gap-10 
+                        '>
+                              <div className='
+                              flex flex-col
+                              space-y-1 sm:space-y-4 
+                              lg:space-y-6 xl:space-y-10 
+                              items-center justify-center
+                              '>
                                     <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
                                     <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>Polygon</p>
                               </div>
@@ -100,8 +116,15 @@ export default function Home() {
                         </div>
 
                         {xdaiGas &&
-                              <div className="grid grid-cols-5 gap-4 md:gap-8 lg:gap-10 ">
-                                    <div className='flex flex-col space-y-1 sm:space-y-4 lg:space-y-6 xl:space-y-10 items-center justify-center'>
+                              <div className="
+                              grid grid-cols-5
+                              gap-4 md:gap-8 lg:gap-10 
+                               ">
+                                    <div className='
+                                    flex flex-col 
+                                    space-y-1 sm:space-y-4 
+                                    lg:space-y-6 xl:space-y-10 
+                                    items-center justify-center'>
                                           <Image className='animate-spin' src={xDaiImg} height={110} width={110} />
                                           <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light '>xDai Gas</p>
                                     </div>
@@ -112,15 +135,15 @@ export default function Home() {
                         }
                   </motion.div>
 
-          
-                              <Heading title="This is SharpArt" hScreen={true}>
-                                    <p className="text-center text-base sm:text-xl lg:text-2xl 
+
+                  <Heading title="This is SharpArt" hScreen={true}>
+                        <p className="text-center text-base sm:text-xl lg:text-2xl 
                                     text-th-primary-light  subpixel-antialiased 
                               ">
-                                          The bridge between talented artists, and the secret of digital asset demand.
-                                    </p>
-                              </Heading>
-                
+                              The bridge between talented artists, and the secret of digital asset demand.
+                        </p>
+                  </Heading>
+
                   <PageLayout>
                         <Heading
                               title='Some Helper Functions'
