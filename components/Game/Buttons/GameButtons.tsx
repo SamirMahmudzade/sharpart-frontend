@@ -3,6 +3,7 @@ import {
     setChoiceUp,
     setChoiceDown,
     selectChoice,
+    selectLoading,
 } from '../../../lib/slices/gameSlice';
 import Submit from './Submit'
 
@@ -10,14 +11,16 @@ import Submit from './Submit'
 
 export default function GameButtons({ clickHandler }): JSX.Element {
     const choice = useSelector(selectChoice)
+    const loading = useSelector(selectLoading)
     const dispatch = useDispatch()
 
     return (
         <>
+         
+                <div>
+                    <Submit clickHandler={clickHandler} />
+                </div>
 
-            <div>
-                <Submit clickHandler={clickHandler} />
-            </div>
 
             <div className='grid grid-flow-col grid-cols-2 gap-4 md:gap-8 w-full '>
                 <div className=''>
@@ -37,7 +40,7 @@ export default function GameButtons({ clickHandler }): JSX.Element {
                         className={choice === false ?
                             'w-full p-4  sm:p-6 md:p-14 lg:p-24  text-center text-xs md:text-sm lg:text-4xl text-th-primary-light rounded-lg bg-opacity-100 bg-th-accent-failure focus:outline-none transition duration-300 ease-in-out'
                             : 'w-full p-4 sm:p-6 md:p-14 lg:p-24 ring-2 lg:ring-4 ring-th-accent-failure text-center text-xs md:text-sm lg:text-4xl text-th-primary-light rounded-lg bg-opacity-0 focus:outline-none transition duration-300 ease-in-out'
-                        } 
+                        }
                     >
                         Dropping
                     </button>

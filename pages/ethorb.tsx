@@ -127,7 +127,7 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                   `}>
                         <div className='col-span-3'>
                               <NodeCard>
-                                    <Heading title='Game Tips'fontSize='text-sm md:text-xl lg:text-4xl' />
+                                    <Heading title='Game Tips' fontSize='text-sm md:text-xl lg:text-4xl' />
                                     <ol className='list-roman break-words p-8 
                                           text-left text-th-primary-light text:sm lg:text-lg 
                                     '>
@@ -152,7 +152,7 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                                           title='Welcome'
                                           fontSize='text-xs md:text-lg lg:text-3xl'
                                     />
-                                          <a target='_blank' href={`https://etherscan.io/address/${address}`} className=' 
+                                    <a target='_blank' href={`https://etherscan.io/address/${address}`} className=' 
                                           break-all text-base 
                                           text-th-primary-light font-normal
                                           subpixel-antialiased
@@ -161,10 +161,10 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                                           transform hover:scale-110
                                           
                                           '>
-                                                {address}
-                                                <ExternalLinkIcon className='inline-flex antialiased'  width={30} height={30}/>
-                                          </a>
-                                   
+                                          {address}
+                                          <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
+                                    </a>
+
                                     <p className='text-th-primary-light text:sm lg:text-lg '>
                                           Wins: {userWins.length}
                                     </p>
@@ -186,10 +186,13 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                               </NodeCard>
                         </div>
                   </div>
+                  <div className='w-200 h-100  '>
+                        <LineChart data={eth} labels={priceLabels} />
 
-                  <LineChart data={eth} labels={priceLabels} />
+                  </div>
+
                   <GameButtons clickHandler={playGame} />
-                  <Heading title='Eth for 7 days'/>
+                  <Heading title='Eth for 7 days' />
                   <LineChart data={ethHistoric} labels={historicLabels} />
                   <UserScoreTable address={address} />
             </PageLayout>
