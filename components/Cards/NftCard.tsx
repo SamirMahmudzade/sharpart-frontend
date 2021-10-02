@@ -19,7 +19,7 @@ export default function NftCard({ nft }: { nft: NftMetadata }): JSX.Element {
       //? Find out the extension of the nft
       const trimmedAudio = nft.animation_url.includes('mp3')
       const trimmedVideo = nft.animation_url.includes('mp4')
-      const trimmedImage = nft.animation_url.includes('jpg' || 'png')
+      const trimmedImage = nft.animation_url.includes('jpg' || 'png' || 'svg' )
 
      
       return (
@@ -31,7 +31,7 @@ export default function NftCard({ nft }: { nft: NftMetadata }): JSX.Element {
                   <p className='text-th-primary-light'>{nft.description}</p>
                   <div className=''>
                         {trimmedAudio && <ReactAudioPlayer className='w-full' src={nft.animation_url} controls controlsList='nodownload' />}
-                        {trimmedVideo && <ReactPlayer controls url={nft.animation_url} />}
+                        {trimmedVideo && <ReactPlayer width='300px' height='300px' controls url={nft.animation_url} />}
                         {trimmedImage && <Image src={nft.image}/>}
                   </div>
             </div>
