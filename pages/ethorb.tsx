@@ -188,7 +188,6 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                   </div>
                   <div className='w-200 h-100  '>
                         <LineChart data={eth} labels={priceLabels} />
-
                   </div>
 
                   <GameButtons clickHandler={playGame} />

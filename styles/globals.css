@@ -17,7 +17,6 @@
       --accent-medium: theme('colors.fuchsia.500');
       --accent-light: theme('colors.fuchsia.300');
       --accent-moralis: theme('colors.moralis');
-
       /*  *success colors */
       --accent-success: theme('colors.green.600');
       --accent-success-light: theme('colors.green.100');
@@ -59,7 +58,7 @@
       --accent-medium: theme('colors.fuchsia.500');
       --accent-light: theme('colors.fuchsia.300');
       --accent-moralis: theme('colors.moralis');
-
+  
       /*  * success colors */
       --accent-success: theme('colors.green.600');
       --accent-success-light: theme('colors.green.100');
