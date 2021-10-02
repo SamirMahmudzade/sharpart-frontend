@@ -54,15 +54,9 @@ export default function Home() {
 
       //* intersection observer hook
 
-      if (!maticGas) return (
-            <div id="div1" className="flex flex-col items-center justify-center ">
-                  <Heading title="This is SharpArt" hScreen={true}>
-                        <p className="text-center text-base sm:text-xl lg:text-2xl 
-                              text-th-primary-light text-shadow-md subpixel-antialiased 
-                              ">
-                              The bridge between talented artists, and the secret of digital asset demand.
-                        </p>
-                  </Heading>
+      if (!maticGas || !ethGas || !xdaiGas) return (
+            <div className="flex flex-col items-center justify-center ">
+                  <div className='border-b-2 w-32 h-32 border-th-primary-light rounded-full '></div>
             </div>
       );
 
