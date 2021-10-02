@@ -1,22 +1,22 @@
+import { useState } from 'react';
 import {
       useMoralis,
       useMoralisQuery,
       useMoralisWeb3Api,
       useMoralisWeb3ApiCall,
-} from 'react-moralis'
-import { useState } from 'react';
-import Moralis from 'moralis'
-import MoralisAuth from '../components/Buttons/MoralisAuth';
+} from 'react-moralis';
+import Moralis from 'moralis';
+import Image from 'next/image'
+import { motion, useAnimation } from 'framer-motion';
 import { RefreshIcon } from '@heroicons/react/solid';
+import MoralisAuth from '../components/Buttons/MoralisAuth';
+import PolygonImg from '../public/polygon-png.png';
 import AlertCard from '../components/Cards/AlertCard';
 import PageLayout from '../components/Layouts/PageLayout';
 import Heading from '../components/Typography/Heading';
-import ReactPlayer from 'react-player';
-import ReactAudioPlayer from 'react-audio-player';
 import NftCard from '../components/Cards/NftCard';
-
+import NodeCard from "../components/Cards/NodeCard";
 export default function Dashboard() {
-
 
       const [uriArray, setUris] = useState([])
 
@@ -46,7 +46,6 @@ export default function Dashboard() {
                         }
                   })
                   setUris(uriLocalArray)
-                  console.log(uriArray)
             })
       }
       if (!isAuthenticated) return (
@@ -63,34 +62,51 @@ export default function Dashboard() {
             </PageLayout>
       )
       return (
-            <PageLayout>
-                  <Heading title={`Welcome ${userAddress}`} />
-                  <button
-                        onClick={() => getNFTs()}
-                        className='
+            <motion.div
+                  initial={{ opacity: 0, translateX: -50, }}
+                  animate={{ opacity: 1, translateX: 0 }}
+                  transition={{ duration: 0.75 }}
+                  className=''
+            >
+                  <PageLayout>
+                        <NodeCard>
+                              <Heading title={`Welcome ${userAddress}`} fontSize='text-sm sm:text-md md:text-4xl' />
+                              <p className='text-center text-th-primary-light'>
+                              View your Polygon 
+                                 Mainnet NFTs
+                               </p>
+                               <Image className='animate-spin ' src={PolygonImg} height={75} width={75} />
+
+                        </NodeCard>
+                        <button
+                              onClick={() => getNFTs()}
+                              className='
                         flex justify-center items-center
                         p-2 text-xl rounded-lg
                         text-th-primary-light 
+                        focus:outline-none
                         hover:shadow-lg bg-th-primary-dark 
                         transition duration-300 transform
                         hover:scale-125 ease-in-out
                   '>
-                        Fetch/Refresh
+                              Fetch/Refresh
 
-                        <RefreshIcon width={50} height={50} />
-                  </button>
+                              <RefreshIcon width={50} height={50} />
+                        </button>
 
-                  <div className='flex justify-center items-center'>
-                        <div className='grid gap-8
-                              grid-flow-row grid-cols-4
+                        <div className='flex justify-center items-center'>
+                              <div className='grid gap-8
+                              grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-4
                               items-center justify-center '>
-                              {uriArray.map((item, index) =>
-                                    <div key={index} className='ring-4 flex items-center justify-center'>
-                                         <NftCard nft={item}/>
-                                    </div>
-                              )}
+                                    {uriArray.map((item, index) =>
+                                          <div key={index} className='ring-4 flex items-center justify-center'>
+                                                <NftCard nft={item} />
+                                          </div>
+                                    )}
+                              </div>
                         </div>
-                  </div>
-            </PageLayout>
+
+                  </PageLayout>
+            </motion.div>
       )
 }
