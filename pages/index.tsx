@@ -53,10 +53,14 @@ export default function Home() {
       }
 
       //* intersection observer hook
+   
+
+
+
 
       if (!maticGas || !ethGas || !xdaiGas) return (
             <div className="flex flex-col items-center justify-center ">
-                  <div className='border-b-2 w-32 h-32 border-th-primary-light rounded-full '></div>
+                  <div className='border-b-2 w-32 h-32 border-th-primary-light rounded-full animate-spinFast'></div>
             </div>
       );
 
