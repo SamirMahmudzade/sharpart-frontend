@@ -192,8 +192,11 @@ module.exports = {
           '50%': { boxShadow: ('0 7px 7px 0px #1e40af ') },
           '75%': { boxShadow: ('0 9px 9px 0px #60a5fa '), },
           ' 100%': { boxShadow: ('0 9px 9px 0px #7fb4f5 ') },
-
         },
+        bgGlow: {
+          '0%': {backgroundColor: ('#000000')},
+          '100%': { backgroundColor: ('#ffffff') }
+        }
 
       },
       animation: {
@@ -201,7 +204,8 @@ module.exports = {
         spin: 'spin infinite linear  8s',
         spinFast: ' spin infinite linear 3s',
         shadowGlow: 'shadowGlow 2s alternate infinite ease-in-out',
-        bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out'
+        bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out',
+        backgroundGlow: 'bgGlow 2s linear infinite ease-in-out'
       }
     }
   },

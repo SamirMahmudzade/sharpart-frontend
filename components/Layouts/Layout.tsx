@@ -18,7 +18,7 @@ export default function Layout({ children }: Childs): JSX.Element {
       } ,[router.route])
 
       return (
-            <div className=" bg-th-background min-h-full">
+            <div className=" bg-th-background min-h-full animate-backgroundGlow">
                   <Head>
                         <title>SharpArt</title>
                         <link rel='icon' href='/favicon.ico' />
