@@ -199,6 +199,7 @@ module.exports = {
       animation: {
         bounce: 'bounce 3s infinite',
         spin: 'spin infinite linear  8s',
+        spinFast: ' spin infinite linear 3s',
         shadowGlow: 'shadowGlow 2s alternate infinite ease-in-out',
         bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out'
       }
