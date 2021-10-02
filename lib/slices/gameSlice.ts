@@ -149,8 +149,7 @@ export const fetchUserScores = (user: string) => async (dispatch: Dispatch) => {
 
       //*Array to push results to 
       let games: GameObject[] = []
-      let parsedWins: GameObject[] = []
-      let parsedLosses: GameObject[] = []
+
       //* Check if it gets any results
       if (results.length === 0 || wins.length === 0 || losses.length === 0) {
             return dispatch(setError('No historic game results found'))
@@ -428,6 +427,8 @@ export const ethOrb = (user: string, price: number, gameChoice: boolean) => asyn
                               })
                         })
             }
+
+            
       }, 60000)
 }
 
