@@ -20,8 +20,6 @@ export default function SimpleCard({ title, body }: SimpleCardProps): JSX.Elemen
             rounded-lg
             shadow-lg
             bg-th-foreground
-            bg-opacity-25
-            
             ">
                   <div className=" " >
                         <p className=" text-center text-sm sm:text-base md:text-lg lg:text-2xl text-th-primary-light ">

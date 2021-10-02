@@ -26,7 +26,7 @@ function LineChart({ data, labels, steps}: Props) {
                   },
 
             ],
-            options: {
+            options: {  
                   y: {
                         stepSize: steps
                   },
@@ -35,7 +35,7 @@ function LineChart({ data, labels, steps}: Props) {
                             labels: {
                                 // This more specific font property overrides the global property
                                 font: {
-                                    size: 26
+                                    size: 36
                                 }
                             }
                         }

@@ -22,7 +22,7 @@ export default function GameButtons({ clickHandler }): JSX.Element {
                 </div>
 
 
-            <div className='grid grid-flow-col grid-cols-2 gap-4 md:gap-8 w-full '>
+            <div className='grid grid-flow-col grid-cols-2 gap-4 md:gap-8 w-1/2 '>
                 <div className=''>
                     <button
                         onClick={() => dispatch(setChoiceUp())}
