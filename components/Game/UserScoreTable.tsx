@@ -36,7 +36,7 @@ export default function UserScoreTable({ address }: Props): JSX.Element {
                         grid grid-flow-row gap-4 md:gap-12 lg:gap-20 
                         p-2 md:p-4 lg:p-8
                         items-center justify-center
-                        bg-th-primary-dark rounded-md">
+                        bg-th-foreground rounded-md">
 
                         <Heading title="Trade Order History" hScreen={false} />
 
