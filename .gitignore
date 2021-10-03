@@ -14,10 +14,10 @@
 
 # production
 /build
-
+/lib/moralis-cloud
 # misc
 .DS_Store
-*.pem
+*.peme
 
 # debug
 npm-debug.log*
