@@ -14,6 +14,8 @@ import '../styles/globals.css'
 
 const moralisAppID = process.env.NEXT_PUBLIC_MORALIS_APP_ID
 const moralisServerUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL
+const moralisDexID = process.env.NEXT_PUBLIC_MORALIS_DEX_APP
+const moralisDexServer = process.env.NEXT_PUBLIC_MORALIS_DEX_SERVER
 
 const MyApp = ({
   Component,
@@ -24,6 +26,7 @@ const MyApp = ({
   pageProps: AppProps
   router: router
 }) => {
+
   useEffect(() => {
   
     if(window !== undefined) {
@@ -37,7 +40,8 @@ const MyApp = ({
     } 
     else return () => {}
   }, [])
- const router = useRouter()
+
+  const router = useRouter()
 
   return (
     <MoralisProvider appId={moralisAppID} serverUrl={moralisServerUrl} >
