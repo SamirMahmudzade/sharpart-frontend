@@ -17,7 +17,6 @@ import {
       fetchUserScores,
       selectLoading,
       selectGameResult,
-      resetChoice,
       selectResults,
       selectWins,
       selectLosses,
@@ -81,7 +80,7 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                   dispatch(setError('User not authenticated'))
             }
             else {
-                  dispatch(resetChoice())
+                  console.log(choice)
                   dispatch(ethOrb(address, eth[eth.length - 1], choice))
             }
       }

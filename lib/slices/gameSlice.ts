@@ -89,9 +89,6 @@ const gameSlice = createSlice({
             setChoiceDown: (state) => {
                   return { ...state, choice: false }
             },
-            resetChoice: (state) => {
-                  return { ...state, choice: null }
-            },
             setGameSession: (state, action) => {
                   return { ...state, gameSession: action.payload }
             }
@@ -118,7 +115,6 @@ export const {
       setGameWin,
       setChoiceUp,
       setChoiceDown,
-      resetChoice,
       setUserResults,
       setUserWins,
       setUserLosses,
