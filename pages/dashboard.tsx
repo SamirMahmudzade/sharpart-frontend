@@ -5,7 +5,6 @@ import {
       useMoralisWeb3Api,
       useMoralisWeb3ApiCall,
 } from 'react-moralis';
-import Moralis from 'moralis';
 import Image from 'next/image'
 import { motion, useAnimation } from 'framer-motion';
 import { RefreshIcon } from '@heroicons/react/solid';
