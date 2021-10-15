@@ -32,7 +32,7 @@ export default function Artists({ artists }: { artists: IArtist[] }) {
             <PageLayout>
                   <div className=" 
             grid grid-cols-2 lg:grid-cols-3
-            gap-4 md:gap-8 lg:gap-12
+            gap-4 md:gap-8 lg:gap-24
             pb-36 items-center justify-center
             ">
                         {artists.map((artist) =>

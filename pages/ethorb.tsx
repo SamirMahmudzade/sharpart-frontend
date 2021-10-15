@@ -151,7 +151,8 @@ export default function EthOrb({ ethHistoric }: EthOrbProps) {
                                           title='Welcome'
                                           fontSize='text-xs md:text-lg lg:text-3xl'
                                     />
-                                    <a target='_blank' href={`https://etherscan.io/address/${address}`} className=' 
+                                    <a target='_blank' href={`https://etherscan.io/address/${address}`} 
+                                    className=' 
                                           break-all text-base 
                                           text-th-primary-light font-normal
                                           subpixel-antialiased

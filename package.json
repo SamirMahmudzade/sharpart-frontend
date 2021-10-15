@@ -38,6 +38,7 @@
     "react-progress-timer": "^1.0.3",
     "react-redux": "^7.2.5",
     "react-toastify": "^7.0.3",
+    "recharts": "^2.1.4",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
