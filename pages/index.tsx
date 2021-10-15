@@ -179,7 +179,14 @@ export default function Home() {
 
                         }
                   </motion.div>
+                        <motion.div
+                         initial={{ opacity: 0, translateX: 0, translateY: 0 }}
+                         animate={{ opacity: 1, translateX:0 , translateY:-825 }}
+                         transition={{ duration: 0.50, delay: 2.5 }}
+                         >
+                               <Heading title='GAS!!!' fontSize='text-6xl'/>
 
+                        </motion.div>
 
                   <Heading title="This is SharpArt" hScreen={true}>
                         <p className="text-center text-base sm:text-xl lg:text-2xl 
