@@ -53,7 +53,7 @@ export default function Home() {
       }
 
       //* intersection observer hook
-   
+
 
 
 
@@ -66,7 +66,7 @@ export default function Home() {
 
       else return (
             <div className='grid grid-flow-row space-y-0 md:space-y-10 lg:space-y-16' >
-                  <motion.div 
+                  <motion.div
                         initial={{ opacity: 0, translateX: 0, translateY: -200 }}
                         animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                         transition={{ duration: 0.75, delay: 0.5 }}
@@ -106,17 +106,17 @@ export default function Home() {
                   </motion.div>
                   <motion.div
                         initial={{ opacity: 0, translateX: +150, translateY: -150 }}
-                        animate={{ opacity: 1, translateX: 0 , translateY: 0}}
+                        animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                         transition={{ duration: 0.75, delay: 1 }}
                         className='grid grid-flow-row space-y-0 md:space-y-10 lg:space-y-16'
                   >
-                
-                  <div className='
+
+                        <div className='
                         grid grid-cols-5 
                         gap-4 md:gap-8 lg:gap-10 
                         '>
-                        <a target='blank' href='https://polygonscan.com/gastracker/' rel="noopener noreferrer">
-                              <div className='
+                              <a target='blank' href='https://polygonscan.com/gastracker/' rel="noopener noreferrer">
+                                    <div className='
                                           antialiased rounded-3xl
                                           ring-offset-th-primary-medium 
                                           hover:scale-110 transform
@@ -128,20 +128,20 @@ export default function Home() {
                                           space-y-1 sm:space-y-4 
                                           lg:space-y-6 xl:space-y-10
                                           items-center justify-center'>
-                                    <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
-                                    <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>
-                                          Polygon
-                                          <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
-                                    </p>
-                              </div>
-                        </a>
-                        <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
-                        <SimpleCard title="Standard gas price" body={maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'} />
-                        <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
-                        <SimpleCard title="Fastest gas price" body={maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'} />
-                  </div>
+                                          <Image className='animate-spin' src={PolygonImg} height={110} width={110} />
+                                          <p className='text-center text-xs sm:text-sm lg:text-2xl font-thin text-th-primary-light'>
+                                                Polygon
+                                                <ExternalLinkIcon className='inline-flex antialiased' width={30} height={30} />
+                                          </p>
+                                    </div>
+                              </a>
+                              <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <SimpleCard title="Standard gas price" body={maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <SimpleCard title="Fastest gas price" body={maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'} />
+                        </div>
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                         initial={{ opacity: 0, translateX: -150, translateY: -150 }}
                         animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                         transition={{ duration: 0.75, delay: 1.5 }}
@@ -176,18 +176,15 @@ export default function Home() {
                                     <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
                                     <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
                               </div>
-
                         }
                   </motion.div>
-                        <motion.div
-                         initial={{ opacity: 0, translateX: 0, translateY: 0 }}
-                         animate={{ opacity: 1, translateX:0 , translateY:-825 }}
-                         transition={{ duration: 0.50, delay: 2.5 }}
-                         >
-                               <Heading title='GAS!!!' fontSize='text-6xl'/>
-
-                        </motion.div>
-
+                  <motion.div
+                        initial={{ opacity: 0, translateX: 0, translateY: 0 }}
+                        animate={{ opacity: 1, translateX: 0, translateY: -825 }}
+                        transition={{ duration: 0.50, delay: 2.5 }}
+                  >
+                        <Heading title='GAS!!!' fontSize='text-6xl' />
+                  </motion.div>
                   <Heading title="This is SharpArt" hScreen={true}>
                         <p className="text-center text-base sm:text-xl lg:text-2xl 
                                     text-th-primary-light  subpixel-antialiased 
