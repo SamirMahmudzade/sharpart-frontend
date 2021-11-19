@@ -195,7 +195,7 @@ export default function Home() {
 
                   <PageLayout>
                         <Heading
-                              title='Some Helper Functions'
+                              title='Some useful functions for contracts'
                               fontSize='text-base sm:text-1xl md:text-5xl '
                         />
                         <NodeCard wFull>
