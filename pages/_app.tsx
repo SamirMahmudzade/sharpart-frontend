@@ -14,8 +14,6 @@ import '../styles/globals.css'
 
 const moralisAppID = process.env.NEXT_PUBLIC_MORALIS_APP_ID
 const moralisServerUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL
-const moralisDexID = process.env.NEXT_PUBLIC_MORALIS_DEX_APP
-const moralisDexServer = process.env.NEXT_PUBLIC_MORALIS_DEX_SERVER
 
 const MyApp = ({
   Component,
