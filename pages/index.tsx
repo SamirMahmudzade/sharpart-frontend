@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useState, useEffect, Suspense } from 'react';
-import { ethers } from 'ethers'
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
 import { ClipboardCopyIcon, ExternalLinkIcon } from '@heroicons/react/solid';
@@ -15,13 +14,15 @@ import Heading from '../components/Typography/Heading';
 import SimpleCard from '../components/Cards/SimpleCard';
 import PageLayout from '../components/Layouts/PageLayout';
 import NodeCard from '../components/Cards/NodeCard';
+import { useEthersBytes } from '../hooks/useEthersBytes';
 
 export default function Home() {
       //todo - Add xDai logo, and equal size to polygon or eth image size.
       const { data: xdaiGas, error: xdaiGasError } = useSWR(
             'https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle',
             fetcher,
-            { refreshInterval: 300060 }
+            { refreshInterval: 300090 }
+            //* 300060 is earliest possible fetch
       )
       const { data: maticGas, error: maticGasError } = useSWR(
             'https://gasstation-mainnet.matic.network',
@@ -34,28 +35,8 @@ export default function Home() {
             { refreshInterval: 10000 }
       )
 
-      //todo - move into its own ethers util hook?
-      //todo - add copyToClipboard button
-      const [ethersBytes, setEthersBytes] = useState({
-            stringed: '',
-            hexed: ''
-      })
-      const handleChange = (e) => {
-            //* Set formatting input on change of text box
-            //* Cannot use square brackets, as the target depends on ethers util.
-            if (e.target.name === 'stringed') {
-                  setEthersBytes({ ...ethersBytes, stringed: ethers.utils.toUtf8String(e.target.value) });
-
-            }
-            else if (e.target.name === 'hexed') {
-                  setEthersBytes({ ...ethersBytes, hexed: ethers.utils.formatBytes32String(e.target.value) })
-            }
-      }
-
-      //* intersection observer hook
-
-
-
+      //? Moved form state for ethersBytes conversion into its own hook
+      const { ethersBytes, handleChange } = useEthersBytes()
 
 
       if (!maticGas || !ethGas || !xdaiGas) return (
@@ -66,6 +47,39 @@ export default function Home() {
 
       else return (
             <div className='grid grid-flow-row space-y-0 md:space-y-10 lg:space-y-16' >
+
+
+                  <motion.div
+                        initial={{ opacity: 0, translateX: -1000, translateY: 0 }}
+                        animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                        transition={{ duration: 0.50, delay: 2.5 }}
+                        className='lg:grid hidden '
+                  >
+                        <Heading title='GAS!!!' fontSize='text-6xl' />
+                  </motion.div>
+                  <div className=' 
+                  grid grid-flow-col 
+                  grid-cols-5 
+                  items-center 
+                  justify-center
+                  '>
+                        <div className=''>
+                              <Heading title="Network" fontSize='text-sm md:text-lg lg:text-5xl' />
+                        </div>
+                        <p className='text-center text-th-primary-light text-sm lg:text-base xl:text-3xl'>
+                              Safe Low gas price
+                        </p>
+                        <p className='text-center text-th-primary-light text-sm lg:text-base xl:text-3xl'>
+                              Standard gas price
+                        </p>
+                        <p className='text-center text-th-primary-light text-sm lg:text-base xl:text-3xl'>
+                              Fast gas price
+                        </p>
+                        <p className='text-center text-th-primary-light text-sm lg:text-base xl:text-3xl'>
+                              Other
+                        </p>
+
+                  </div>
                   <motion.div
                         initial={{ opacity: 0, translateX: 0, translateY: -200 }}
                         animate={{ opacity: 1, translateX: 0, translateY: 0 }}
@@ -75,9 +89,9 @@ export default function Home() {
                         {ethGas &&
                               <div className="
                               grid grid-cols-5 
-                              gap-4 md:gap-8 lg:gap-10 
+                              gap-0 md:gap-8 lg:gap-10 
                               ">
-                                    <a target='blank' href='https://etherscan.io/gastracker' rel="noopener noreferrer" >
+                                    <a className='focus:outline-none' target='blank' href='https://etherscan.io/gastracker' rel="noopener noreferrer" >
                                           <div className='
                                           antialiased rounded-3xl
                                           ring-offset-th-primary-medium 
@@ -96,10 +110,18 @@ export default function Home() {
                                                 </p>
                                           </div>
                                     </a>
-                                    <SimpleCard title="Safe Low gas price" body={ethGas.safeLow + ' ' + 'Gwei'} />
-                                    <SimpleCard title="Standard gas price" body={ethGas.standard + ' ' + 'Gwei'} />
-                                    <SimpleCard title="Fast gas price" body={ethGas.fastest + ' ' + 'Gwei'} />
-                                    <SimpleCard title="Next block base" body={ethGas.nextBase + ' ' + 'Gwei'} />
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {ethGas.safeLow + ' ' + 'Gwei'}
+                                    </p>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {ethGas.standard + ' ' + 'Gwei'}
+                                    </p>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {ethGas.fastest + ' ' + 'Gwei'}
+                                    </p>
+                                     <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                         Next Base {ethGas.nextBase + ' ' + 'Gwei'}
+                                    </p>
                               </div>
                         }
 
@@ -115,7 +137,7 @@ export default function Home() {
                         grid grid-cols-5 
                         gap-4 md:gap-8 lg:gap-10 
                         '>
-                              <a target='blank' href='https://polygonscan.com/gastracker/' rel="noopener noreferrer">
+                              <a className='focus:outline-none' target='blank' href='https://polygonscan.com/gastracker/' rel="noopener noreferrer">
                                     <div className='
                                           antialiased rounded-3xl
                                           ring-offset-th-primary-medium 
@@ -135,10 +157,18 @@ export default function Home() {
                                           </p>
                                     </div>
                               </a>
-                              <SimpleCard title="Safe Low gas price" body={maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'} />
-                              <SimpleCard title="Standard gas price" body={maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'} />
-                              <SimpleCard title="Fast gas price" body={maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
-                              <SimpleCard title="Fastest gas price" body={maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'} />
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    {maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'}
+                              </p>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    {maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'}
+                              </p>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    {maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'}
+                              </p>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    {maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'}
+                              </p>
                         </div>
                   </motion.div>
                   <motion.div
@@ -152,7 +182,7 @@ export default function Home() {
                               grid grid-cols-5
                               gap-4 md:gap-8 lg:gap-10 
                                ">
-                                    <a href="https://blockscout.com/xdai/mainnet/" target="blank" rel="noopener noreferrer">
+                                    <a className='focus:outline-none' href="https://blockscout.com/xdai/mainnet/" target="blank" rel="noopener noreferrer">
                                           <div className='
                                           antialiased rounded-3xl
                                           ring-offset-th-primary-medium 
@@ -172,19 +202,21 @@ export default function Home() {
                                                 </p>
                                           </div>
                                     </a>
-                                    <SimpleCard title="Safe Low gas price" body={xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'} />
-                                    <SimpleCard title="Standard gas price" body={xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'} />
-                                    <SimpleCard title="Fast gas price" body={xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'} />
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'}
+                                    </p>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'}
+                                    </p>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                          {xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'}
+                                    </p>
                               </div>
                         }
                   </motion.div>
-                  <motion.div
-                        initial={{ opacity: 0, translateX: 0, translateY: 0 }}
-                        animate={{ opacity: 1, translateX: 0, translateY: -825 }}
-                        transition={{ duration: 0.50, delay: 2.5 }}
-                  >
-                        <Heading title='GAS!!!' fontSize='text-6xl' />
-                  </motion.div>
+
+
+
                   <Heading title="This is SharpArt" hScreen={true}>
                         <p className="text-center text-base sm:text-xl lg:text-2xl 
                                     text-th-primary-light  subpixel-antialiased 
