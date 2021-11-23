@@ -17,11 +17,10 @@ import Heading from '../Typography/Heading'
 export default function NftCard({ nft }: { nft: NftMetadata }): JSX.Element {
 
       //? Find out the extension of the nft
-      const trimmedAudio = nft.animation_url.includes('mp3')
-      const trimmedVideo = nft.animation_url.includes('mp4')
+      const trimmedAudio = nft.animation_url.includes('mp3' || 'wav')
+      const trimmedVideo = nft.animation_url.includes('mp4' || 'm4v')
       const trimmedImage = nft.animation_url.includes('jpg' || 'png' || 'svg' )
 
-     
       return (
             <div className='flex flex-col space-y-10 '>
                   <div>
@@ -30,8 +29,8 @@ export default function NftCard({ nft }: { nft: NftMetadata }): JSX.Element {
                   </div>
                   <p className='text-th-primary-light'>{nft.description}</p>
                   <div className=''>
-                        {trimmedAudio && <ReactAudioPlayer className='w-full' src={nft.animation_url} controls controlsList='nodownload' />}
-                        {trimmedVideo && <ReactPlayer width='300px' height='300px' controls url={nft.animation_url} />}
+                        {trimmedAudio && <ReactAudioPlayer className=' h-full w-full' src={nft.animation_url} controls controlsList='nodownload' />}
+                        {trimmedVideo && <ReactPlayer width='250px' height='250px' controls url={nft.animation_url} />}
                         {trimmedImage && <Image src={nft.image}/>}
                   </div>
             </div>
