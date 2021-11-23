@@ -75,6 +75,7 @@ module.exports = {
         xl: '1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%)',
         none: 'none',
       },
+
       listStyleType: {
         none: 'none',
 
@@ -177,6 +178,16 @@ module.exports = {
         'th-accent-moralis': 'var(--accent-moralis)',
 
       },
+      brightness: {
+        25: '.25',
+        30: '.30',
+        35: '.35',
+        40: '.40',
+        45: '.45',
+        50: '.50',
+        55: '.55',
+        100: '1.00'
+      },
       keyframes: {
 
         bottomShadow: {
@@ -194,8 +205,8 @@ module.exports = {
           ' 100%': { boxShadow: ('0 9px 9px 0px #7fb4f5 ') },
         },
         bgShift: {
-          'from': { 'background-position': '0 0' },
-          'to': { 'background-position': '400% 0%' }
+          'from': { 'background-color': '#1e40af' },
+          ' to': { 'background-color': '#60a5fa' },
         }
 
       },
@@ -205,7 +216,7 @@ module.exports = {
         spinFast: ' spin infinite linear 3s',
         shadowGlow: 'shadowGlow 2s alternate infinite ease-in-out',
         bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out',
-        bgShift: 'bgShift 100s linear infinite '
+        bgShift: 'bgShift 2s alternate infinite ease-in-out'
       }
     }
   },
