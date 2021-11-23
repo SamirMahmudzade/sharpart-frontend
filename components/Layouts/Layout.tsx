@@ -18,7 +18,7 @@ export default function Layout({ children }: Childs): JSX.Element {
       } ,[router.route])
 
       return (
-            <div className=" bg-gradient-to-r from-th-background to-th-background min-h-full animate-bgShift">
+            <div className=" min-h-full bg-th-background">
                   <Head>
                         <title>SharpArt</title>
                         <link rel='icon' href='/favicon.ico' />
@@ -26,7 +26,7 @@ export default function Layout({ children }: Childs): JSX.Element {
                         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
                   </Head>
                   <Nav />
-                  <div className="z-40 lg:mx-20 sm:mx-6 mx-4 justify-center items-center" >
+                  <div className="z-40 lg:mx-20 sm:mx-6 mx-4 justify-center items-center " >
                         {children}
                   </div>
             </div>
