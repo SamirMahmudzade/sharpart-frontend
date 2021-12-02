@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
-import { useState, useEffect, Suspense } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
 import { ClipboardCopyIcon, ExternalLinkIcon } from '@heroicons/react/solid';
 import { fetcher } from "../lib/helpers/fetchers";
 import copyToBoard from '../lib/helpers/copyToClipboard';
@@ -11,7 +9,6 @@ import PolygonImg from '../public/polygon-png.png';
 import EthImg from '../public/eth.png'
 import xDaiImg from '../public/xDai.png'
 import Heading from '../components/Typography/Heading';
-import SimpleCard from '../components/Cards/SimpleCard';
 import PageLayout from '../components/Layouts/PageLayout';
 import NodeCard from '../components/Cards/NodeCard';
 import { useEthersBytes } from '../hooks/useEthersBytes';
@@ -47,16 +44,6 @@ export default function Home() {
 
       else return (
             <div className='grid grid-flow-row space-y-0 md:space-y-10 lg:space-y-16' >
-
-
-                  <motion.div
-                        initial={{ opacity: 0, translateX: -1000, translateY: 0 }}
-                        animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-                        transition={{ duration: 0.50, delay: 2.5 }}
-                        className='lg:grid hidden '
-                  >
-                        <Heading title='GAS!!!' fontSize='text-6xl' />
-                  </motion.div>
                   <div className=' 
                   grid grid-flow-col 
                   grid-cols-5 
@@ -110,16 +97,16 @@ export default function Home() {
                                                 </p>
                                           </div>
                                     </a>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                           {ethGas.safeLow + ' ' + 'Gwei'}
                                     </p>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                           {ethGas.standard + ' ' + 'Gwei'}
                                     </p>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                           {ethGas.fastest + ' ' + 'Gwei'}
                                     </p>
-                                     <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                     <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                          Next Base {ethGas.nextBase + ' ' + 'Gwei'}
                                     </p>
                               </div>
@@ -157,16 +144,16 @@ export default function Home() {
                                           </p>
                                     </div>
                               </a>
-                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                     {maticGas.safeLow.toFixed(2).toString() + ' ' + 'Gwei'}
                               </p>
-                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                     {maticGas.standard.toFixed(2).toString() + ' ' + 'Gwei'}
                               </p>
-                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                     {maticGas.fast.toFixed(2).toString() + ' ' + 'Gwei'}
                               </p>
-                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                              <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                     {maticGas.fastest.toFixed(2).toString() + ' ' + 'Gwei'}
                               </p>
                         </div>
@@ -202,13 +189,13 @@ export default function Home() {
                                                 </p>
                                           </div>
                                     </a>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-l'>
                                           {xdaiGas.slow.toFixed(2).toString() + ' ' + 'Gwei'}
                                     </p>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                           {xdaiGas.average.toFixed(2).toString() + ' ' + 'Gwei'}
                                     </p>
-                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-2xl'>
+                                    <p className='flex items-center justify-center text-center text-th-primary-light text-base md:text-lg lg:text-xl'>
                                           {xdaiGas.fast.toFixed(2).toString() + ' ' + 'Gwei'}
                                     </p>
                               </div>
@@ -244,6 +231,7 @@ export default function Home() {
                                           name='hexed'
                                           onChange={(e) => { handleChange(e) }}
                                           className='
+                                          rounded-lg
                                           focus:outline-none text-xl 
                                           text-th-primary-dark focus:bg-th-primary-light 
                                           transition-colors duration-300 
@@ -283,6 +271,7 @@ export default function Home() {
                                           name='stringed'
                                           onChange={(e) => { handleChange(e) }}
                                           className='
+                                          rounded-lg
                                           focus:outline-none text-xl 
                                           text-th-primary-dark focus:bg-th-primary-light 
                                           transition-colors duration-300 
