@@ -204,6 +204,20 @@ module.exports = {
           '75%': { boxShadow: ('0 9px 9px 0px #60a5fa '), },
           ' 100%': { boxShadow: ('0 9px 9px 0px #7fb4f5 ') },
         },
+        shadowGlowMd: {
+          '0%': { boxShadow: ('0 1px 1px 0px rgba(0, 0, 0, 0.1)') },
+          '25%': { boxShadow: ('0 5px 5px 0px #0c4a6e ') },
+          '50%': { boxShadow: ('0 7px 7px 0px #1e40af ') },
+          '75%': { boxShadow: ('0 9px 9px 0px #60a5fa '), },
+          ' 100%': { boxShadow: ('0 9px 9px 5px #7fb4f5 ') },
+        },
+        shadowGlowLg: {
+          '0%': { boxShadow: ('0 1px 1px 0px rgba(0, 0, 0, 0.1)') },
+          '25%': { boxShadow: ('0 5px 5px 0px #0c4a6e ') },
+          '50%': { boxShadow: ('0 7px 7px 0px #1e40af ') },
+          '75%': { boxShadow: ('0 9px 9px 0px #60a5fa '), },
+          ' 100%': { boxShadow: ('0 9px 9px 10px #7fb4f5 ') },
+        },
         bgShift: {
           'from': { 'background-color': '#1e40af' },
           ' to': { 'background-color': '#60a5fa' },
@@ -215,6 +229,8 @@ module.exports = {
         spin: 'spin infinite linear  8s',
         spinFast: ' spin infinite linear 3s',
         shadowGlow: 'shadowGlow 2s alternate infinite ease-in-out',
+        shadowGlowMd: 'shadowGlowMd 2s alternate infinite ease-in-out',
+        shadowGlowLg: 'shadowGlowLg 2s alternate infinite ease-in-out',
         bottomShadow: 'bottomShadow 1s alternate infinite ease-in-out',
         bgShift: 'bgShift 2s alternate infinite ease-in-out'
       }
