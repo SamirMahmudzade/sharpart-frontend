@@ -24,7 +24,7 @@ const MyApp = ({
   pageProps: AppProps
   router: router
 }) => {
-
+/*
   useEffect(() => {
   
     if(window !== undefined) {
@@ -38,7 +38,7 @@ const MyApp = ({
     } 
     else return () => {}
   }, [])
-
+*/
   const router = useRouter()
 
   return (
