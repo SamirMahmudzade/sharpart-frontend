@@ -1,169 +1,190 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useTheme } from 'next-themes'
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { SunIcon, HomeIcon, MenuIcon } from '@heroicons/react/solid';
-import { useInterval } from '../hooks/useInterval';
-
+import React, { useState } from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { SunIcon, HomeIcon, MenuIcon } from "@heroicons/react/solid";
+import { useInterval } from "../hooks/useInterval";
 
 type listItem = {
-      id: number,
-      text: string,
-      link: string
-}
+  id: number;
+  text: string;
+  link: string;
+};
 
 const Nav = () => {
-      //* nav items for map
-      //todo - Put into CMS.
-      const listItems: listItem[] = [
-            {
-                  id: 1,
-                  text: 'Your NFTs',
-                  link: 'dashboard',
-            },
-            {
-                  id: 2,
-                  text: 'Artists',
-                  link: 'artists'
-            },
-            {
-                  id: 3,
-                  text: 'Ether Dapps',
-                  link: 'etherdapps'
-            },
-            {
-                  id: 4,
-                  text: 'Contact',
-                  link: 'contact'
-            },
-            {
-                  id: 5,
-                  text: 'About',
-                  link: 'about'
-            },
-      ]
+  //* nav items for map
+  //todo - Put into CMS.
+  const listItems: listItem[] = [
+   
+    {
+      id: 1,
+      text: "Artists",
+      link: "artists",
+    },
+    {
+      id: 2,
+      text: "Ether Dapps",
+      link: "etherdapps",
+    },
+    {
+      id: 3,
+      text: "Contact",
+      link: "contact",
+    },
+    {
+      id: 4,
+      text: "About",
+      link: "about",
+    },
+  ];
 
-      const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
+  //* When span anchor title is hovered, save it as true, to stop anchor animation.
+  const [linkHovered, setLinkHovered] = useState({
+    title: false,
+  });
 
-      //* When span anchor title is hovered, save it as true, to stop anchor animation.
-      const [linkHovered, setLinkHovered] = useState({
-            title: false,
-      })
+  const onTitleEnter = () => {
+    setLinkHovered({
+      ...linkHovered,
+      title: true,
+    });
+  };
+  const onTitleLeave = () => {
+    setLinkHovered({
+      ...linkHovered,
+      title: false,
+    });
+  };
 
-      const onTitleEnter = () => {
-            setLinkHovered({ 
-                  ...linkHovered, 
-                  title : true
-            })
-      }
-      const onTitleLeave = () => {
-            setLinkHovered({ 
-                  ...linkHovered, 
-                  title : false
-            })
-      }
-      
-
-
-      //todo - clean up after setting up responsive dropdown
-      return (
-            <div>
-                  <div className=' w-0 h-0 md:h-auto md:w-auto invisible md:visible'>
-                        <nav className='
+  //todo - clean up after setting up responsive dropdown
+  return (
+    <div>
+      <div className=" w-0 h-0 md:h-auto md:w-auto invisible md:visible">
+        <nav
+          className="
                   flex flex-wrap items-center justify-center 
-                  bg-th-background md:px-8 px-2 py-4 shadow-lg
-                  '>
-                              <Link href='/'>
-                                    <a
-                                          onMouseEnter={() => onTitleEnter()}
-                                          onMouseLeave={() => onTitleLeave()}
-                                          className={`
+                   md:px-8 px-2 py-4 shadow-lg
+                  "
+        >
+          <Link href="/">
+            <a
+              className="
                               xl:inline-flex w-0  
                               xl:w-auto xl:p-2 p-0 mr-0  xl:mr-4  
                               items-center justify-center 
                               invisible xl:visible 
-                              ${linkHovered.title ? 'animate-none' : 'animate-shadowGlow'}
+                              hover:animate-none
+                              animate-shadowGlow
                               hover:shadow-lg rounded-lg transition duration-100 
-                              ease-in-out transform  hover:scale-110  antialiased`} >
-                                          <span className=' 
+                              ease-in-out transform  hover:scale-110  antialiased
+                              "
+            >
+              <span
+                className=" 
                                           lg:text-3xl text-sm text-th-primary-light
                                           font-bold uppercase tracking-wide
                                           transition transform 
-                                          '>
-                                                Sharpart
-                                          </span>
-                                    </a>
-                              </Link>
-                              <Link href='/'>
-                                    <a className='
+                                          "
+              >
+                Sharpart
+              </span>
+            </a>
+          </Link>
+          <Link href="/">
+            <a
+              className="
                               xl:inline-flex  xl:display-none 
                               xl:w-0  p-2  xl:p-0  xl:mr-0  
                               items-center justify-center 
                               antialiased focus:outline-none text-th-primary-light
                               hover:shadow-lg rounded-lg 
-                              transition duration-100 ease-in-out transform  hover:scale-110  '
-                                    >
-                                          <HomeIcon width={35} height={35} />
-                                    </a>
-                              </Link>
+                              transition duration-100 ease-in-out transform  hover:scale-110  "
+            >
+              <HomeIcon width={35} height={35} />
+            </a>
+          </Link>
 
-                              {listItems.map((listItem) =>
-                                    <Link key={listItem.id} href={`/` + listItem.link}>
-                                          <a  
-                                          className='
+          {listItems.map((listItem) => (
+            <Link key={listItem.id} href={`/` + listItem.link}>
+              <a
+                className="
                                                 subpixel-antialiased text-th-primary-light
                                                 text-xs md:text-base lg:text-lg xl:text-1xl
                                                 md:h-auto inline-flex md:w-auto 
                                                 font-bold items-center justify-center
                                                 py-2 px-4 xl:py-4 xl:px-6
                                                 lg:mx-4 md:mx-2 sm:mx-1 mx-0 
-                                                
                                                 hover:shadow-lg focus:outline-none
-                                                rounded-lg transition duration-100 
-                                                ease-in-out transform  hover:scale-110
-                                                '>
-                                                {listItem.text}
-                                          </a>
-                                    </Link>
-                              )}
-
-                              <button
-                                    className='
-                              xl:ml-auto ml-0 inline-flex items-center 
+                                                rounded-lg transition duration-300
+                                                ease-in-out transform  hover:scale-125
+                                                "
+              >
+                {listItem.text}
+              </a>
+            </Link>
+          ))}
+          <a
+            target="blank"
+            rel="noopener noreferrer"
+            href="https://sharpart-web3-dapp.vercel.app/"
+            className="
+            text-transparent bg-clip-text bg-gradient-to-br from-th-primary-light to-th-primary-dark
+                                    hover:animate-shadowGlow
+                                    hover:cursor-pointer
+                                    subpixel-antialiased 
+                                                text-xs md:text-base lg:text-lg xl:text-1xl
+                                                md:h-auto inline-flex md:w-auto 
+                                                font-bold items-center justify-center
+                                                py-2 px-4 xl:py-4 xl:px-6
+                                                xl:ml-auto ml-0
+                                                lg:mx-4 md:mx-2 sm:mx-1 mx-0 
+                                                hover:shadow-lg focus:outline-none
+                                                rounded-lg transition duration-300
+                                                ease-in-out transform  hover:scale-125"
+          >
+            Launch Dapp
+          </a>
+          <button
+            className="
+                              inline-flex items-center 
                               lg:h-16 lg:w-16 md:h-8 md:w-8 sm:w-5 sm:h-5 
                               focus:outline-none text-th-primary-light
                               hover:shadow-lg rounded-lg antialiased 
-                              transition duration-100 ease-in-out transform  hover:scale-110 '
-                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                              >
-                                    <SunIcon />
+                              transition duration-100 ease-in-out transform  hover:scale-110 "
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <SunIcon />
+          </button>
+        </nav>
+      </div>
 
-                              </button>
-                        </nav>
-                  </div>
-
-                  <div className='md:invisible visible'>
-                        <nav className='
+      <div className="md:invisible visible">
+        <nav
+          className="
 
                   flex items-center justify-start
                   bg-th-background space-x-6
-                  md:px-8 px-2 py-4 shadow-lg'>
-                              <Link href='/'>
-                                    <a className='
+                  md:px-8 px-2 py-4 shadow-lg"
+        >
+          <Link href="/">
+            <a
+              className="
                               xl:inline-flex  xl:display-none 
                               xl:w-0  p-2  xl:p-0  xl:mr-0  
                               items-center justify-center 
                               antialiased focus:outline-none text-th-primary-light
                               hover:shadow-lg rounded-lg 
-                              transition duration-100 ease-in-out transform  hover:scale-110  '
-                                    >
-                                          <HomeIcon width={35} height={35} />
-                                    </a>
-                              </Link>
-                              <Menu>
-                                    <Menu.Button className="
+                              transition duration-100 ease-in-out transform  hover:scale-110  "
+            >
+              <HomeIcon width={35} height={35} />
+            </a>
+          </Link>
+          <Menu>
+            <Menu.Button
+              className="
                         flex space-x-4
                         justify-center items-center
                         lg:p-4 text-xl
@@ -172,21 +193,22 @@ const Nav = () => {
                         shadow-md hover:shadow-lg
                         transition duration-100 ease-in-out 
                         transform hover:scale-110
-                        ">
-                                          <MenuIcon width={50} height={50} />
-                                    </Menu.Button>
+                        "
+            >
+              <MenuIcon width={50} height={50} />
+            </Menu.Button>
 
-                                    <Transition
-                                          as={Fragment}
-                                          enter="transition ease-out duration-100"
-                                          enterFrom="transform opacity-0 scale-95"
-                                          enterTo="transform opacity-100 scale-100"
-                                          leave="transition ease-in duration-75"
-                                          leaveFrom="transform opacity-100 scale-100"
-                                          leaveTo="transform opacity-0 scale-95"
-                                    >
-
-                                          <Menu.Items className="
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items
+                className="
                               sm:p-2 rounded-md text-lg
                               absolute flex 
                               flex-col space-y-2
@@ -195,43 +217,53 @@ const Nav = () => {
                               text-left sm:text-center text-th-primary-dark
                               z-50
                               
-                              ">
-                                                {listItems.map((listItem) =>
-                                                      <Link key={listItem.id} href={`/` + listItem.link}>
-                                                            <a className=' 
+                              "
+              >
+                {listItems.map((listItem) => (
+                  <Link key={listItem.id} href={`/` + listItem.link}>
+                    <a
+                      className=" 
                                                             text-sm
                                                  rounded-md px-2
                                                  transition duration-200 ease-in-out 
                                                  hover:bg-th-primary-medium hover:cursor-pointer
-                                                '>
-                                                                  {listItem.text}
-                                                            </a>
-                                                      </Link>
-                                                )}
-
-                                          </Menu.Items>
-                                    </Transition>
-                              </Menu>
-                              <button
-                                    className='
+                                                "
+                    >
+                      {listItem.text}
+                    </a>
+                  </Link>
+                ))}
+              </Menu.Items>
+            </Transition>
+          </Menu>
+          <a
+            target="blank"
+            rel="noopener noreferrer"
+            className="
+                                    hover:animate-shadowGlow
+                                    hover:cursor-pointer
                                     inline-flex items-center
                               focus:outline-none text-th-primary-light
                               hover:shadow-lg rounded-lg antialiased 
-                              transition duration-100 ease-in-out transform  hover:scale-110 '
-                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                              >
-                                    <SunIcon width={50} height={50} />
-
-                              </button>
-                        </nav>
-                  </div>
-
-            </div>
-      );
+                              text-sm
+                              transition duration-300 ease-in-out transform hover:scale-110 "
+          >
+            Launch Dapp
+          </a>
+          <button
+            className="
+                                    inline-flex items-center
+                              focus:outline-none text-th-primary-light
+                              hover:shadow-lg rounded-lg antialiased 
+                              transition duration-100 ease-in-out transform  hover:scale-110 "
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <SunIcon width={50} height={50} />
+          </button>
+        </nav>
+      </div>
+    </div>
+  );
 };
 
-
 export default Nav;
-
-
-
