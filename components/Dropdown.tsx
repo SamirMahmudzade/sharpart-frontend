@@ -21,8 +21,9 @@ export default function Dropdown({ title, options, clickHandler }) {
                         shadow-md hover:shadow-lg
                         transition duration-200 ease-in-out 
                         hover:text-th-primary-dark
+                        max-w-sm
                         ">
-                              <p>
+                              <p className=' truncate'>
                                     {title}
                               </p>
                               <ArrowDownIcon width={25} height={25} />
